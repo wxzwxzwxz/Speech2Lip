@@ -134,11 +134,26 @@
   <!-- Teaser video-->
   <section class="hero teaser">
     <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Overview</h2>
+          <div class="content has-text-justified">
+            <p>Given a speech as input, our model generates highquality talking-head videos and supports pose-controllable synthesis. The decomposition and synthesis modules make learning from
+              a short video more effective and the composition module enables
+              us to synthesize high-fidelity videos.
+            </p>
+            <img src="./static/images/picture1.png" alt="Description of the image">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container is-max-desktop">
       <div class="hero-body">
         <!-- <video poster="" id="tree" autoplay controls muted loop height="100%">
           Your video here
           <source src="./static/video/video.mp4" type="video/mp4">
         </video> -->
+        <br><br><br>
         <video src="./static/video/video.mp4" controls></video>"
         <!-- <h2 class="subtitle has-text-centered">
         Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
@@ -185,11 +200,12 @@
               a video of just a few minutes in length and achieve state-of-the-art performance in both visual quality and
               speech-visual synchronization.
             </p>
-            <img src="./static/images/picture1.png" alt="Description of the image">
+            <br><br>
+            <!-- <img src="./static/images/picture1.png" alt="Description of the image">
             <p>Figure 1. Given a speech as input, our model generates highquality talking-head videos and supports pose-controllable synthesis. The decomposition and synthesis modules make learning from
               a short video more effective and the composition module enables
               us to synthesize high-fidelity videos.
-              </p>
+            </p> -->
           </div>
         </div>
       </div>
@@ -206,20 +222,21 @@
               <h2 class="title is-3">Motivation</h2>
               <div class="level-set has-text-justified">
                 <p>
-                  Talking videos contain various motions (e.g. lip, head, torso).
-                  <br>
-                  Only limited areas (e.g. lip) are highly associated with speech.
-                  <br>
-                  Simplifying modeling of motions and appearances in speech-sensitive area is critical for effective learning from a short video.
-                  
+                  One of our key motivation is that talking videos contain various motions (e.g. lip, head, torso) while only limited areas (e.g. lip) are highly associated with speech. Hence, simplifying modeling of motions and appearances in speech-sensitive area is critical for effective learning from a short video.
+                  Hence, we apply warping to all captured images with varying head poses (observed views), bring them to a fixed head pose (canonical view) and compute heatmaps in both views.
                 </p>
-                <h2 class="title is-4">Preliminary Experiment</h2>
+              </div>
+              <div class="center-image"> <!-- 添加一个新的包裹元素 -->
+                <img src="./static/images/pictuer2.png" >
+              </div>
               <div class="level-set has-text-justified">
                 <p>
-                  We apply warping to all captured images with varying head poses (observed views), bring them to a fixed head pose (canonical view) and compute heatmaps in both views.
+                  We observe in the left image that without eliminating other motions, many areas are affected by the speech.
+                  And in the right image, with eliminating other motions, limited areas display high sensitivity to the speech.
                 </p>
-                <div class="center-image"> <!-- 添加一个新的包裹元素 -->
-                  <img src="./static/images/pictuer2.png" >
+              </div>
+              <div class="center-image"> <!-- 添加一个新的包裹元素 -->
+                <img src="./static/images/picture4.png" >
               </div>
             </div>
           </div>
@@ -227,43 +244,12 @@
       </div>
     </section>
 
-
-
     <style>
       .center-image { /* 新的 CSS 样式 */
         display: flex;
         justify-content: center;
       }
     </style>
-
-
-
-
-<section class="section is-small" style="background-color:white;">
-  <!-- 原始内容 -->
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full">
-        <div class="content">
-          <h2 class="title is-4">Observation</h2>
-          <div class="level-set has-text-justified">
-            <p>
-              Left: without eliminating other motions, many areas are affected by the speech.
-<br>
-Right: with eliminating other motions, limited areas display high sensitivity to the speech.
-            </p>
-            <div class="center-image"> <!-- 添加一个新的包裹元素 -->
-              <img src="./static/images/picture4.png" >
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 
 <section class="section is-small" style="background-color:;">
   <!-- 原始内容 -->
@@ -299,10 +285,15 @@ Right: with eliminating other motions, limited areas display high sensitivity to
 
           </h2>
           <div class="level-set has-text-justified">
+            <p>Qualitative Results
+            </p>
+            <div class="center-image"> <!-- 添加一个新的包裹元素 -->
+              
+              <img src="./static/images/Qualitative Results.png" alt="">
+            </div>
+            <br>
             <p>
               Quantitative Results
-
-
             </p>
             <div class="center-image img"> <!-- 添加一个新的包裹元素 -->
                <img src="./static/images/picture6.png" >
@@ -312,14 +303,7 @@ Right: with eliminating other motions, limited areas display high sensitivity to
             <div class="center-image img"> 
               <img src="./static/images/picture7.png" style="width: 400px;">
               <img src="./static/images/ablation2.png" style="width: 400px;">
-           </div> -->
-           <p>Qualitative Results
-          </p>
-          <div class="center-image"> <!-- 添加一个新的包裹元素 -->
-            
-            <img src="./static/images/Qualitative Results.png" alt="">
-         </div>
-        
+            </div> -->
           </div>
         </div>
       </div>
@@ -353,9 +337,10 @@ Right: with eliminating other motions, limited areas display high sensitivity to
       <div class="columns is-centered">
         <div class="column is-8">
           <div class="content">
-            <p><strong>Acknowledgement:</strong> This work has been supported by the Research Fund from Tencent ARC lab.</p>
+            <p><strong>Acknowledgement</strong></p>
             <p>
-              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+              This work has been supported by the Research Fund from Tencent ARC lab.
+              <br> This page was built using the <a:link href="https://github.com/eliahuhorwitz/Academic-project-page-template"
                 target="_blank">Academic Project Page Template</a> which was adopted from the <a
                 href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
               You are free to borrow the of this website, we just ask that you link back to this page in the footer.
