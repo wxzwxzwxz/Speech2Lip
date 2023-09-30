@@ -179,7 +179,7 @@
               mainly driven by the input speech. Therefore, directly learning a mapping function from speech to the
               entire head image
               is prone to ambiguity, particularly when using a short video
-              for training. We thus propose a decomposition-synthesis-composition framework named Speech to Lip
+              for training. We thus propose a decomposition-synthesis-composition framework named Speech-to-Lip
              (Speech2Lip)
               that disentangles speech-sensitive and speech-insensitive
               motion/appearance to facilitate effective learning from limited training data, resulting in the generation
@@ -222,19 +222,26 @@
               <h2 class="title is-3">Motivation</h2>
               <div class="level-set has-text-justified">
                 <p>
-                  One of our key motivation is that talking videos contain various motions (e.g. lip, head, torso) while only limited areas (e.g. lip) are highly associated with speech. Hence, simplifying modeling of motions and appearances in speech-sensitive area is critical for effective learning from a short video.
-                  Hence, we apply warping to all captured images with varying head poses (observed views), bring them to a fixed head pose (canonical view) and compute heatmaps in both views.
+                  Our motivation lies in the fact that talking videos contain multiple types of motion, including lip, head, and torso movements. 
+                  However, only specific areas, like the lips, are closely tied to speech. 
+                  Simplifying the modeling of motion and appearance in these speech-sensitive areas is crucial for effective learning from short videos. 
+                  To accomplish this, we apply warping to captured images with varying head poses (observed views), 
+                  aligning them to a fixed head pose (canonical view) using conventional Structure-from-motion knowledge. 
+                  Please see the figure below for a detailed depiction of the warping process.
                 </p>
               </div>
               <div class="center-image"> <!-- 添加一个新的包裹元素 -->
                 <img src="./static/images/pictuer2.png" >
               </div>
+              <br>
               <div class="level-set has-text-justified">
                 <p>
-                  We observe in the left image that without eliminating other motions, many areas are affected by the speech.
-                  And in the right image, with eliminating other motions, limited areas display high sensitivity to the speech.
+                  This approach generates heatmaps in observed and canonical views, providing a comprehensive understanding of video content. 
+                  In the left image, multiple areas are influenced by speech due to the presence of other motions. 
+                  However, in the right image, eliminating other motions allows us to identify limited areas with high speech sensitivity.
                 </p>
               </div>
+              <br>
               <div class="center-image"> <!-- 添加一个新的包裹元素 -->
                 <img src="./static/images/picture4.png" >
               </div>
@@ -261,9 +268,16 @@
           </h2>
           <div class="level-set has-text-justified">
             <p>
-              We model them individually (a), and compose the ultimate output image (b). The synchronization performance enhancement and GAMEM are illustrated in (c) and (d).
-
+              Our framework decomposes speech-sensitive and speech-insensitive motions/appearances first, 
+              models them individually (the major part of (a)), 
+              and composes the ultimate output image (b). 
+              Besides, the synchronization performance enhancement module and the GAMEM are illustrated in (c) and (d), respectively.
+              The inputs include continuous pixel coordinates, speech audio signals, and timestamps. 
+              The speech-driven implicit model will generate speech-sensitive canonical-view lip images, 
+              which will be further transformed into observed space to composite the eventual output image. 
+              A full-head depth map is learned along with the training process, supporting pose-controllable synthesis.
             </p>
+            <br>
             <div class="center-image"> <!-- 添加一个新的包裹元素 -->
                <img src="./static/images/picture5.png" >
             </div>
@@ -288,7 +302,6 @@
             <p>Qualitative Results
             </p>
             <div class="center-image"> <!-- 添加一个新的包裹元素 -->
-              
               <img src="./static/images/Qualitative Results.png" alt="">
             </div>
             <br>
